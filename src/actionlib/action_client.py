@@ -606,6 +606,8 @@ class ActionClient:
 
             time.sleep(0.01)
 
+        if rospy.is_shutdown():
+            raise rospy.exceptions.ROSInterruptException("ROS shutdown request")
         return started
 
     def _status_cb(self, msg):
